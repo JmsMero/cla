@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>app跳转</title>
+</head>
+<body>
+<div id='call-button'>唤起jd</div>
+
+<script src='https://unpkg.com/callapp-lib@2.1.7/dist/index.umd.js'></script>
+<script>
+  const option = {
+    scheme: {
+      protocol: 'openApp.jdMobile',
+    },
+    intent: {
+      package: "com.tencent.mm",
+      scheme: "weixin"
+    },
+    appstore: "https://itunes.apple.com/cn/app//id414245413",
+    //应用宝
+    yinyongbao:"https://a.app.qq.com/o/simple.jsp?pkgname=com.jingdong.app.mall",
+    fallback: "https://a.app.qq.com/o/simple.jsp?pkgname=com.jingdong.app.mall", //唤端失败后跳转的地址
+    timeout: 2000,
+  };
+  const lib = new CallApp(option);
+  const callButton = document.querySelector('#call-button');
+  callButton.addEventListener('click', () => {
+    lib.open({
+      path: 'virtual?params={"category":"jump","sourceType":"sourceType_test","des":"m","url":"https://u.jd.com/IHdMZN4","unionSource":"Awake","channel":"5768f16df47b40cb8906fb3fa141cd4e","union_open":"union_cps"}',
+    });
+  });
+</script>
+</body>
+</html>
